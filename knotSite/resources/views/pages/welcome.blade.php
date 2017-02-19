@@ -18,7 +18,7 @@
               @foreach($posts as $post)
                 <h2>{{ $post->title }}</h2>
                 <p>{{ strlen($post->body)>365 ? substr($post->body, 0, 365)."..." : $post->body }}</p>
-                <a href="#" class="btn btn-primary">Read more</a>
+                <a href="{{ route('blog.single', [$post->slug]) }}" class="btn btn-primary">Read more</a>
                 <hr>
               @endforeach
           </div>

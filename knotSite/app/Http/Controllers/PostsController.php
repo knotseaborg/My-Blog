@@ -8,6 +8,10 @@ use Session;
 
 class PostsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -41,7 +45,8 @@ class PostsController extends Controller
     {
         //Validate data
         $this->validate($request, [
-            'title' => 'required|unique:posts|max:191', //title is required and should be les than 191 char
+            'title' => 'required|max:191', //title is required and should be les than 191 char
+            'slug' => 'required|max:191|min:5|alpha_dash|unique:posts,slug',
             'body' => 'required'//Body is required
         ]);
 
@@ -51,6 +56,7 @@ class PostsController extends Controller
         //Store data
         $post = new Post; //Creating an object of model Post
         $post->title = $request->title; //storing title
+        $post->slug = $request->slug;
         $post->body = $request->body; //storing body
         $post->save(); //Saving the stored data
         //Display
@@ -97,7 +103,8 @@ class PostsController extends Controller
         $post = Post::find($id);
         //Validate data
         $this->validate($request, [
-            'title' => 'required|unique:posts|max:191',
+            'title' => 'required|max:191',
+            'slug' => 'required|min:5|max:255|alpha_dash|unique:posts,slug,'.$id, ///$id makes
             'body' => 'required'
         ]);
 

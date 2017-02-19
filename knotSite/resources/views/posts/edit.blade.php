@@ -4,10 +4,11 @@
 
 @section('content')
 <div class="row">
-        {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!} <!--Method needs to be specified for PUT-->
+        {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'data-parsley-validate' => '']) !!} <!--Method needs to be specified for PUT-->
             <div class="col-md-8">
-            {{ Form::text('title', null, array('class' => 'form-control input-lg')) }}
-            {{ Form::textarea('body', null, array('class' => 'form-control form-spacing-top')) }}
+            {{ Form::text('title', null, array('class' => 'form-control input-lg', 'required' => '')) }}
+            {{ Form::text('slug', null, array('class' => 'form-control form-spacing-top', 'required' => '', 'minlength' => 5, 'maxlength' => 191)) }}
+            {{ Form::textarea('body', null, array('class' => 'form-control form-spacing-top', 'required' => '')) }}
             </div>
             <div class="col-md-4 well">
                 <div class="row">

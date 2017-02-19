@@ -14,8 +14,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <dl class="dl-horizontal">
-                        <dt>Created:</dt><dd>{{ date("M t, Y h:i a",strtotime($post->created_at)) }}</dd>
-                        <dt>Last updated:</dt><dd>{{ date("M t, Y h:i a",strtotime($post->updated_at)) }}</dd>
+                        <label>Url: </label><p><a href="{{ url('blog/'.$post->slug) }}">{{ url('blog/'.$post->slug) }}</a></p>
+                        <label>Created:</label><p>{{ date("M t, Y h:i a",strtotime($post->created_at)) }}</p>
+                        <label>Last updated:</label><p>{{ date("M t, Y h:i a",strtotime($post->updated_at)) }}</p>
                         <hr>
                     </dl>
                 </div>
