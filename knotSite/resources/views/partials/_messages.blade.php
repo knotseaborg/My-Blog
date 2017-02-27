@@ -1,6 +1,6 @@
 @if(Session::has('success')) <!--Checks if 'success' flash session is created-->
     <div class="alert alert-success" role="alert">
-        <lead>Success:</lead>{{ Session::get('success') }}<!--Displays the success message stored in the flash session-->
+        <lead>{{ Session::get('success') }}</lead><!--Displays the success message stored in the flash session-->
     </div>
 @endif
 

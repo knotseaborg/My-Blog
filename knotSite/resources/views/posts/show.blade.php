@@ -8,6 +8,12 @@
             <p>
                 {{ $post->body }}
             </p>
+            <p><span class="h4">Category:</span> {{ isset($post->category->name) ? $post->category->name : 'None'}}</p>
+            <div class="tags">
+                @foreach ($post->tag as $tag)
+                    <span class="label label-default">{{ $tag->name }}</span>
+                @endforeach
+            </div>
         </div>
 
         <div class="col-md-4 well">
@@ -34,7 +40,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    {!! Html::linkRoute('posts.index', '<< See All Posts', [], ['class' => 'btn-default btn btn-btn-space btn-block'])!!}
+                    {!! Html::linkRoute('posts.index', 'All Posts', [], ['class' => 'btn-default btn btn-btn-space btn-block'])!!}
                 </div>
 
             </div>

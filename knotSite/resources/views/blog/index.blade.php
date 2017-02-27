@@ -4,8 +4,9 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <h1 >Blog</h1>
+        <div class="col-md-10 col-md-offset-1 well">
+            <h1>My Blog</h1>
+            <hr>
             @foreach($posts as $post)
                 <h3>{{ $post->title }}</h3>
                 <p>Pulished: {{ date('M d,Y h:ma',strtotime($post->created_at)) }}</p>
